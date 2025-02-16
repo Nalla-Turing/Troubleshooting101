@@ -75,13 +75,14 @@ as `BD Address: 00:00:00:00:00:00`
 
 2:- Trying to restart the adapter and then checking the config
 
-<!-- cobaltcheese@pop-os:~$ sudo hciconfig hci0 reset
-[sudo] password for cobaltcheese: 
-Can't get device info: No such device -->
+    cobaltcheese@pop-os:~$ sudo hciconfig hci0 reset
+    [sudo] password for cobaltcheese: 
+    Can't get device info: No such device
 
 Hmm it's strange, it means the Bluetooth adapter (hci0) is not properly recognized at the system level.
 while `lsusb` shows the device `(IMC Networks Wireless_Device)` used for bluetooth.
 Checking if I have the required firmware file
+
     ls /lib/firmware | grep -i bt
 
 It seems to have some no missing firmware files but then why the fuck is it not working :(
