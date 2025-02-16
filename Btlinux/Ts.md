@@ -23,10 +23,12 @@ After reinstallation, shutdown your machine and power it back on, so that your h
 Using `TLP` (a free, open-source, command-line utility designed to optimize battery life on Linux laptops by tweaking kernel settings that impact power consumption, offering both default and customizable power-saving options)
 to change the settings interferring with Bluetooth functionality
 
-1:- edit the `tlp.conf` file 
+1:- edit the `tlp.conf` file
+
     sudo nano /etc/tlp.conf
 
 2:- Change the settings as follows
+
     WIFI_PWR_ON_AC=off
     WIFI_PWR_ON_BAT=off
     USB_AUTOSUSPEND=0
@@ -34,19 +36,24 @@ to change the settings interferring with Bluetooth functionality
     USB_DENYLIST="your bluettoh device id"
 
 3:- Save the settings and restart tlp
+
     sudo systemctl restart tlp
 
 4:- Check the autosuspend setting
+
     tlp-stat --usb
 
 If the BLuetooth is in `control = auto` change it to `on`
+
     echo 'options btusb enable_autosuspend=n' | sudo tee /etc/modprobe.d/btusb.conf
 
 reload the Bluetooth module Using
+
     sudo modprobe -r btusb
     sudo modprobe btusb
 
 And after check the autosuspend setting again reboot the system
+
     sudo reboot 
 Or just shut down and restart
 
@@ -67,6 +74,7 @@ It seems that OS is recognizing my adapter but not being able to initialize it p
 as `BD Address: 00:00:00:00:00:00` 
 
 2:- Trying to restart the adapter and then checking the config
+
 <!-- cobaltcheese@pop-os:~$ sudo hciconfig hci0 reset
 [sudo] password for cobaltcheese: 
 Can't get device info: No such device -->
